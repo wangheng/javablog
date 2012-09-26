@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta name="author" content="emlog" />
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<link href="./views/style/default/style.css" type=text/css rel=stylesheet>
+<link href="./views/css/css-main.css" type=text/css rel=stylesheet>
+<script type="text/javascript"
+	src="../include/lib/js/jquery/jquery-1.2.6.js"></script> <script
+	type="text/javascript" src="../include/lib/js/jquery/plugin-cookie.js"></script>
+<script type="text/javascript" src="./views/js/common.js"></script>
+
+<style type='text/css'>
+#tip {
+	background: url(../content/plugins/tips/icon_tips.gif) no-repeat left
+		3px;
+	padding: 3px 18px;
+	margin: 5px 0px;
+	font-size: 12px;
+	color: #999999;
+}
+</style>
+<title>点滴记忆 - 管理中心</title>
+</head>
+<body>
+<div class="center">
+<table id=header cellspacing=0 cellpadding=0 width="988" border=0>
+	<tbody>
+		<tr>
+			<td width="9" id="headerleft"></td>
+			<td width="125" class="logo" align="left"><a href="./"
+				title="返回管理首页">emlog</a></td>
+
+			<td class="vesion" width="20">4.1.0</td>
+			<td class="home" align="left"><a href="../" target="_blank"
+				title="在新窗口浏览我的blog"> 点滴记忆 </a></td>
+			<td align=right nowrap class="headtext"><a href="configure.php"><img
+				src="./views/images/setting.gif" align="absmiddle" border="0">
+			设置</a>&nbsp;&nbsp;|&nbsp;&nbsp; <a href="template.php"><img
+				src="./views/images/skin.gif" align="absmiddle" border="0">
+			换模板</a>&nbsp;&nbsp;|&nbsp;&nbsp; <a href="./">管理首页</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="./?action=logout">退出</a>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td width="9" id="headerright"></td>
+	</tbody>
+</table>
+<table cellspacing=0 cellpadding=0 width="100%" border=0>
+	<tbody>
+		<tr>
+
+			<td valign=top align=left width="114">
+			<div id=sidebartop></div>
+			<table cellspacing=0 cellpadding=0 width="100%" border=0>
+				<tbody>
+					<tr>
+						<td valign=top align=left width="114">
+						<div id=sidebar>
+						<div class="sidebarmenu" onclick="displayToggle('log_mg', 1);">日志管理</div>
+
+						<div id="log_mg">
+						<div class="sidebarsubmenu" id="menu_wt"><a
+							href="write_log.php">写日志</a></div>
+						<div class="sidebarsubmenu" id="menu_draft"><a
+							href="admin_log.php?pid=draft">草稿<span id="dfnum"> </span></a></div>
+						<div class="sidebarsubmenu" id="menu_log"><a
+							href="admin_log.php">日志</a></div>
+						<div class="sidebarsubmenu" id="menu_tw"><a
+							href="twitter.php">碎语</a></div>
+						<div class="sidebarsubmenu" id="menu_tag"><a href="tag.php">标签</a></div>
+
+						<div class="sidebarsubmenu" id="menu_sort"><a
+							href="sort.php">分类</a></div>
+						<div class="sidebarsubmenu" id="menu_cm"><a
+							href="comment.php">评论</a></div>
+						<div class="sidebarsubmenu" id="menu_tb"><a
+							href="trackback.php">引用</a></div>
+						</div>
+						</div>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+			<table cellspacing=0 cellpadding=0 width="100%" border=0>
+				<tbody>
+					<tr>
+						<td valign=top align=left width=114>
+						<div id=sidebar>
+						<div class="sidebarmenu" onclick="displayToggle('blog_mg', 1);">博客管理</div>
+
+						<div id="blog_mg">
+						<div class="sidebarsubmenu" id="menu_widget"><a
+							href="widgets.php">Widgets</a></div>
+						<div class="sidebarsubmenu" id="menu_page"><a
+							href="page.php">页面</a></div>
+						<div class="sidebarsubmenu" id="menu_link"><a
+							href="link.php">链接</a></div>
+						<div class="sidebarsubmenu" id="menu_user"><a
+							href="user.php">作者</a></div>
+						<div class="sidebarsubmenu" id="menu_data"><a
+							href="data.php">数据</a></div>
+
+						</div>
+						</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table cellspacing=0 cellpadding=0 width="100%" border=0>
+				<tbody>
+					<tr>
+
+						<td valign=top align=left width=114>
+						<div id=sidebar>
+						<div class="sidebarmenu" onclick="displayToggle('extend_mg', 1);">功能扩展</div>
+						<div id="extend_mg">
+						<div class="sidebarsubmenu" id="menu_plug"><a
+							href="plugin.php"><img src="./views/images/plugin.gif"
+							align="absbottom" border="0"> 插件</a></div>
+						</div>
+						</div>
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="sidebarBottom"></div>
+			</td>
+			<td id=container valign=top align=left>
+			<div id="tip">:) 你可以使用widgets功能对博客侧边栏组件排序并自定义侧边栏的组件</div>
+			<script>
+$("#blog_mg").css('display', $.cookie('em_blog_mg') ? $.cookie('em_blog_mg') : '');
+$("#log_mg").css('display', $.cookie('em_log_mg') ? $.cookie('em_log_mg') : '');
+$("#extend_mg").css('display', $.cookie('em_extend_mg') ? $.cookie('em_extend_mg') : '');
+</script><script charset="utf-8" src="./editor/kindeditor.js"></script>
+			<div class=containertitle><b>写日志</b><span id="msg_2"></span></div>
+
+			<div id="msg"></div>
+			<form action="save_log.php?action=add" method="post"
+				enctype="multipart/form-data" id="addlog" name="addlog">
+			<table cellspacing="1" cellpadding="4" width="720" border="0">
+				<tbody>
+					<tr nowrap="nowrap">
+						<td><label for="title" id="title_label">输入日志标题</label> <input
+							type="text" maxlength="200" style="width: 710px;" name="title"
+							id="title" /></td>
+
+					</tr>
+					<tr>
+						<td><a
+							href="javascript: displayToggle('FrameUpload', 0);autosave(1);"
+							class="thickbox">附件管理</a><span id="asmsg"> <input
+							type="hidden" name="as_logid" id="as_logid" value="-1"></span><br />
+						<div id="FrameUpload" style="display: none;"><iframe
+							width="720" height="160" frameborder="0"
+							src="attachment.php?action=selectFile"></iframe></div>
+						<textarea id="content" name="content" cols="100" rows="8"
+							style="width: 719px; height: 460px;"></textarea> <script>loadEditor('content');</script>
+						</td>
+					</tr>
+					<tr nowrap="nowrap">
+						<td>
+						<div style="margin: 10px 0px 5px 0px;"><label for="tag"
+							id="tag_label">日志标签，半角逗号分隔</label> <input name="tag" id="tag"
+							maxlength="200" style="width: 432px;" /> <select name="sort"
+							id="sort" style="width: 130px;">
+							<option value="-1">选择分类...</option>
+						</select> <input maxlength="200" style="width: 139px;" name="postdate"
+							id="postdate" value="2011-11-12 22:50:17" /> <input name="date"
+							id="date" type="hidden" value=""></div>
+						<div style="color: #2A9DDB; cursor: pointer;"><a
+							href="javascript:displayToggle('tagbox', 0);">选择已有标签+</a></div>
+
+						<div id="tagbox"
+							style="width: 688px; margin: 0px 0px 0px 30px; display: none;">
+						<a href="javascript: insertTag('表情，好吧，不好吧','tag');">表情，好吧，不好吧</a>
+						</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="show_advset" onclick="displayToggle('advset', 1);"><b>高级选项</b></div>
+
+			<table cellspacing="1" cellpadding="4" width="720" border="0"
+				id="advset">
+				<tr nowrap="nowrap">
+					<td><b>日志摘要：</b><br />
+					<textarea id="excerpt" name="excerpt"
+						style="width: 719px; height: 260px; border: #CCCCCC solid 1px;"></textarea>
+					<script>loadEditor('excerpt');</script></td>
+				</tr>
+
+				<tr nowrap="nowrap">
+					<td><span id="alias_msg_hook"></span><b>链接别名：</b>(用于自定义日志链接。需要<a
+						href="./permalink.php" target="_blank">启用链接别名</a>)<span
+						id="alias_msg_hook"></span><br />
+					<input name="alias" id="alias" style="width: 711px;" /></td>
+				</tr>
+				<tr nowrap="nowrap">
+					<td><b>引用通告：</b>(每行一条引用地址)<br />
+
+					<textarea name="pingurl" id="pingurl"
+						style="width: 715px; height: 50px;" class="input"></textarea></td>
+				</tr>
+				<tr>
+					<td><b>日志访问密码：</b> <input type="text" value="" name="password"
+						id="password" style="width: 80px;" /> <span id="post_options">
+					<input type="checkbox" value="y" name="top" id="top" /> <label
+						for="top">日志置顶</label> <input type="checkbox" value="y"
+						name="allow_remark" id="allow_remark" checked="checked" /> <label
+						for="allow_remark">允许评论</label> <input type="checkbox" value="y"
+						id="allow_tb" name="allow_tb" checked="checked" /> <label
+						for="allow_tb">允许引用</label> </span></td>
+
+				</tr>
+			</table>
+			<table cellspacing="1" cellpadding="4" width="720" border="0">
+				<tr>
+					<td align="center"><br> <input type="hidden"
+						name="ishide" id="ishide" value=""> <input type="submit"
+						value="发布日志" onclick="return checkform();" class="button" /> <input
+						type="hidden" name="author" id="author" value=1 /> <input
+						type="button" name="savedf" id="savedf" value="保存草稿"
+						onclick="autosave(2);" class="button" />
+					</td>
+				</tr>
+			</table>
+			</form>
+			<div class=line></div>
+			<script>
+$("#menu_wt").addClass('sidebarsubmenu1');
+$("#advset").css('display', $.cookie('em_advset') ? $.cookie('em_advset') : '');
+$("#alias").keyup(function(){checkalias();});
+$("#title").focus(function(){$("#title_label").hide();});
+$("#title").blur(function(){if($("#title").val() == '') {$("#title_label").show();}});
+$("#tag").focus(function(){$("#tag_label").hide();});
+$("#tag").blur(function(){if($("#tag").val() == '') {$("#tag_label").show();}});
+setTimeout("autosave(0)",60000);
+</script></td>
+		</tr>
+	</tbody>
+</table>
+<div>
+<p align="center">&copy;2011 <a href="http://www.emlog.net"
+	target="_blank">emlog</a></p>
+</div>
+</div>
+</body>
+</html>
